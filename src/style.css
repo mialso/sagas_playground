@@ -1,0 +1,7 @@
+.red {
+    color: red;
+}
+
+.red > img {
+    width: 100px;
+}
