@@ -33,9 +33,22 @@ function btn2() {
     return element;
 }
 
+function btn3() {
+    const element = document.createElement('button');
+    element.innerHTML = 'increment button';
+    element.onclick = () => store.dispatch({ type: 'COUNTER_UP'});
+    return element;
+}
+
 function dataComponent() {
     const element = document.createElement('div');
     element.innerHTML = 'no data available';
+    return element;
+}
+
+function counterComponent(num) {
+    const element = document.createElement('div');
+    element.innerHTML = `current num: ${num}`;
     return element;
 }
 
@@ -49,11 +62,20 @@ const dataChangeHandler = element => () => {
     }
 }
 
+const counterChangeHandler = element => () => {
+    const state = store.getState();
+    element.innerHTML = `current num: ${state.counter}`;
+}
+
 const dataRenderer = dataComponent();
+const counterRenderer = counterComponent(store.getState().counter);
 
 document.getElementById('app').appendChild(component());
 document.getElementById('app').appendChild(btn());
 document.getElementById('app').appendChild(btn2());
+document.getElementById('app').appendChild(btn3());
 document.getElementById('app').appendChild(dataRenderer);
+document.getElementById('app').appendChild(counterRenderer);
 
 store.subscribe(dataChangeHandler(dataRenderer));
+store.subscribe(counterChangeHandler(counterRenderer));
