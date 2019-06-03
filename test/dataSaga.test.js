@@ -26,7 +26,7 @@ test('dataSaga: success case', (t) => {
     t.end();
 });
 
-test('dataSaga: success case', (t) => {
+test('dataSaga: error case', (t) => {
     const iterator = dataSaga();
     t.deepEqual(
         iterator.next().value,
