@@ -9,7 +9,7 @@ const store = initStore();
 function component() {
     const element = document.createElement('div');
 
-    element.innerHTML = "some sample text";
+    element.innerHTML = 'some sample text';
     element.classList.add('red');
 
     const myImg = new Image();
@@ -29,14 +29,14 @@ function btn() {
 function btn2() {
     const element = document.createElement('button');
     element.innerHTML = 'data button';
-    element.onclick = () => store.dispatch({ type: 'DATA_FETCH_REQUEST'});
+    element.onclick = () => store.dispatch({ type: 'DATA_FETCH_REQUEST' });
     return element;
 }
 
 function btn3() {
     const element = document.createElement('button');
     element.innerHTML = 'increment button';
-    element.onclick = () => store.dispatch({ type: 'COUNTER_UP'});
+    element.onclick = () => store.dispatch({ type: 'COUNTER_UP' });
     return element;
 }
 
@@ -60,12 +60,12 @@ const dataChangeHandler = element => () => {
     if (state.error) {
         element.innerHTML = state.error;
     }
-}
+};
 
 const counterChangeHandler = element => () => {
     const state = store.getState();
     element.innerHTML = `current num: ${state.counter}`;
-}
+};
 
 const dataRenderer = dataComponent();
 const counterRenderer = counterComponent(store.getState().counter);

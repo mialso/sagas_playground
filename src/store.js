@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { call, put, takeEvery, select } from 'redux-saga/effects';
+import {
+    call, put, takeEvery, select,
+} from 'redux-saga/effects';
 import { getData } from './data';
 
 const initialState = {
@@ -11,18 +13,18 @@ const initialState = {
 
 function reducer(state = initialState, action) {
     switch (action.type) {
-        case 'DATA_FETCH_SUCCESS': return {
-            ...state,
-            data: action.payload.data,
-        };
-        case 'DATA_FETCH_FAIL': return {
-            ...state,
-            error: action.payload.message,
-        };
-        case 'COUNTER_UP': return {
-            ...state,
-            counter: ++state.counter,
-        };
+    case 'DATA_FETCH_SUCCESS': return {
+        ...state,
+        data: action.payload.data,
+    };
+    case 'DATA_FETCH_FAIL': return {
+        ...state,
+        error: action.payload.message,
+    };
+    case 'COUNTER_UP': return {
+        ...state,
+        counter: ++state.counter,
+    };
     }
     return state;
 }
