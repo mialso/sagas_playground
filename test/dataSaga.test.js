@@ -1,13 +1,7 @@
-/*
-const test = require('tape');
-const { call } = require('redux-saga/effects');
-const { dataSaga } = require('../src/store.js');
-const { getData } = require('../src/getData.js');
-*/
 import test from 'tape';
 import { call, put } from 'redux-saga/effects';
-import { dataSaga } from '../src/store.js';
-import { getData } from '../src/data.js';
+import { dataSaga } from '../src/store';
+import { getData } from '../src/data';
 
 test('dataSaga: success case', (t) => {
     const iterator = dataSaga();

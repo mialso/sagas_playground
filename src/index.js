@@ -2,7 +2,7 @@ import printMe from './print';
 import { initStore } from './store';
 
 import './style.css';
-import MyImg from './me.jpg';
+import MyImg from './some_1.jpeg';
 
 const store = initStore();
 
@@ -37,6 +37,13 @@ function btn3() {
     const element = document.createElement('button');
     element.innerHTML = 'increment button';
     element.onclick = () => store.dispatch({ type: 'COUNTER_UP' });
+    return element;
+}
+
+function btn4() {
+    const element = document.createElement('button');
+    element.innerHTML = 'composed resource';
+    element.onclick = () => store.dispatch({ type: 'RES_FETCH_REQUEST' });
     return element;
 }
 
@@ -76,6 +83,7 @@ document.getElementById('app').appendChild(btn2());
 document.getElementById('app').appendChild(btn3());
 document.getElementById('app').appendChild(dataRenderer);
 document.getElementById('app').appendChild(counterRenderer);
+document.getElementById('app').appendChild(btn4());
 
 store.subscribe(dataChangeHandler(dataRenderer));
 store.subscribe(counterChangeHandler(counterRenderer));

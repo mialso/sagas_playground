@@ -4,6 +4,7 @@ import {
     call, put, takeEvery, select,
 } from 'redux-saga/effects';
 import { getData } from './data';
+import { forkComposer, composerWrapper } from './requiredRes';
 
 const initialState = {
     data: '',
@@ -46,10 +47,12 @@ export function* counterSaga(action) {
 function* rootSaga() {
     yield takeEvery('DATA_FETCH_REQUEST', dataSaga);
     yield takeEvery('COUNTER_UP', counterSaga);
+    yield takeEvery('RES_FETCH_REQUEST', composerWrapper);
 }
 
 export function initStore() {
-    const sagaMiddleware = createSagaMiddleware();
+    const monitor = window["__SAGA_MONITOR_EXTENSION__"];
+    const sagaMiddleware = createSagaMiddleware({ sagaMonitor: monitor });
 
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

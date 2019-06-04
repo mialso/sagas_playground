@@ -6,6 +6,8 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
+    "lint": "eslint src/*.js",
+    "lint:test": "eslint test/*.js",
     "test": "tape -r esm test/*.test.js"
   },
   "author": "mialso",
