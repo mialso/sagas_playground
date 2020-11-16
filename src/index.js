@@ -59,6 +59,13 @@ function counterComponent(num) {
     return element;
 }
 
+function startMyModule() {
+    const element = document.createElement('button');
+    element.innerHTML = 'start my module';
+    element.onclick = () => store.dispatch({ type: 'START_MODULE', meta: { key: 'myModule' } });
+    return element;
+}
+
 const dataChangeHandler = element => () => {
     const state = store.getState();
     if (state.data) {
@@ -84,6 +91,7 @@ document.getElementById('app').appendChild(btn3());
 document.getElementById('app').appendChild(dataRenderer);
 document.getElementById('app').appendChild(counterRenderer);
 document.getElementById('app').appendChild(btn4());
+document.getElementById('app').appendChild(startMyModule());
 
 store.subscribe(dataChangeHandler(dataRenderer));
 store.subscribe(counterChangeHandler(counterRenderer));

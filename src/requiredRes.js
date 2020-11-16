@@ -33,6 +33,7 @@ function* resource(id, timeout) {
         const data = yield getResource(id, timeout);
         yield put(taskSuccessAction(id, data));
     } catch(e) {
+        console.info(`ERROR: ${e.message}`)
         yield put(taskErrorAction(id));
     } finally {
         if (yield cancelled()) {

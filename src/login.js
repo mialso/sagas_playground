@@ -3,7 +3,7 @@ import {
 } from 'redux-saga/effects';
 import {
     login, logout, saveToken, clearToken,
-} from './user.js';
+} from './user';
 
 export function* authorize(user, password) {
     try {
@@ -11,7 +11,7 @@ export function* authorize(user, password) {
         yield put({ type: 'LOGIN_SUCCESS', payload: { token } });
         yield call(saveToken, token);
     } catch (e) {
-        yield put({ type: 'LOGIN_ERROR', error });
+        yield put({ type: 'LOGIN_ERROR', error: e.message });
     } finally {
         if (yield cancelled()) {
             // do smth on cancell
